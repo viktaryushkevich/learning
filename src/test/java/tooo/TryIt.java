@@ -1,17 +1,27 @@
 package tooo;
 
+        import java.io.IOException;
         import net.sf.json.JSONObject;
         import net.sf.json.JSONSerializer;
         import org.apache.commons.io.IOUtils;
         import java.io.InputStream;
 
 public class TryIt {
-    public static String email;
+    private String email;
 
-    public static void main(String[] args) throws Exception {
-        InputStream is =
-                TryIt.class.getResourceAsStream( "sample.json");
-        String jsonTxt = IOUtils.toString( is );
+    public TryIt(String fileToParse)  {
+        InputStream is = TryIt.class.getClassLoader().getResourceAsStream(fileToParse);
+
+        if (is == null) {
+            throw new IllegalArgumentException(fileToParse + " file does not exist");
+        }
+
+        String jsonTxt = null;
+        try {
+            jsonTxt = IOUtils.toString( is );
+        } catch (final IOException e) {
+            throw new IllegalStateException("Can not parse file " + fileToParse, e);
+        }
 
         JSONObject json = (JSONObject) JSONSerializer.toJSON( jsonTxt );
 //        double coolness = json.getDouble( "coolness" );
@@ -33,10 +43,8 @@ public class TryIt {
 
 
     }
-    public String getUs() {
-       String goal = email;
-
-        return goal;
+    public String getEmail() {
+       return email;
     }
 
 }

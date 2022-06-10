@@ -16,9 +16,9 @@ public class HelloWorld {
 
             System.setProperty("webdriver.chrome.driver",utilities.login.main_url);
 
-           NewLife went = new NewLife();
+            TryIt went = new TryIt("sample.json");
 
-            System.out.println("myname"+ went.putOut());
+            System.out.println("my email: "+ went.getEmail());
 
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--lang=en");

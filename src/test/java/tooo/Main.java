@@ -32,7 +32,7 @@ public class Main {
 //}
 
     public static Root getValues() throws IOException {
-        InputStream getLocalJsonFile = new FileInputStream("C:\\Users\\Viktar Yushkevich\\IdeaProjects\\untitled3\\src\\test\\java\\tooo\\sample.json");
+        InputStream getLocalJsonFile = Main.class.getClassLoader().getResourceAsStream("sample.json");
         ObjectMapper om = new ObjectMapper();
         Root jsonFile= om.readValue(getLocalJsonFile, Root.class);
 
