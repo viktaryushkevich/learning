@@ -1,0 +1,8 @@
+{
+  "login" :
+  {
+    "userName" : "John Doe",
+    "email" : "johndoe@john.com",
+    "main_url": "C:\\Users\\Viktar Yushkevich\\Documents\\chromedriver.exe"
+  }
+}
